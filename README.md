@@ -4,9 +4,9 @@
 
 ## Middle Fix (IMPORTANT!)
 
-We very often have to make plugins or to integrate projects, and having to deal with duplicated asset names and some times path conflicts.
+Very often we have to include plugins or integrate projects, sometimes it results in duplicated asset names and file path conflicts.
 
-For this matter, we've adopted a middle fix convention for project and plugin assets in general... for example:
+For this matter, we've adopted a middle fix convention for project and plugin assets... for example:
 
 > BP_ZVR_GameMode (A Game Mode Blueprint from our ZOAN Virtual Reality plugin)
 > 
@@ -448,40 +448,31 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- MP_PN_Startup
 	|   |-- MP_PN_Building
 	|   |-- MP_PN_Garden
-        |   |-- Common
-        |   |   |-- <a href="#2.7">Animations</a>
-        |   |   |-- Audio
-        |   |-- Jack
-        |   |-- Steve
-        |   |-- <a href="#2.1.3">Zoe</a>
-        |-- <a href="#2.5">Core</a>
-        |   |-- Characters
-        |   |-- Engine
-        |   |-- <a href="#2.1.2">GameModes</a>
-        |   |-- Interactables
-        |   |-- Pickups
-        |   |-- Weapons
-        |-- Effects
-        |   |-- Electrical
-        |   |-- Fire
-        |   |-- Weather
-        |-- <a href="#2.4">Maps</a>
-        |   |-- Campaign1
-        |   |-- Campaign2
-        |-- <a href="#2.8">MaterialLibrary</a>
-        |   |-- Debug
-        |   |-- Metal
-        |   |-- Paint
-        |   |-- Utility
-        |   |-- Weathering
-        |-- Placeables
-        |   |-- Pickups
-        |-- Weapons
-            |-- Common
-            |-- Pistols
-            |   |-- DesertEagle
-            |   |-- RocketPistol
-            |-- Rifles
+	|   |-- Garden
+	|   |   |-- MP_PN_Garden_Part1
+	|   |   |-- MP_PN_Garden_Part2
+	|   |   |-- ...
+	|   |-- ...
+	|-- Meshes
+	|   |-- VivePad
+	|   |   |-- SM_PN_VivePad
+	|   |   |-- M_PN_VivePad_Master
+	|   |   |-- MI_PN_VivePad
+	|   |   |-- ...
+	|   |-- ZoanPad
+	|   |   |-- SM_PN_ZoanPad
+	|   |   |-- M_PN_ZoanPad_Master
+	|   |   |-- ...
+	|-- Materials
+	|   |-- Prototype
+	|   |   |-- M_PN_AlignedUVs_Master
+	|   |   |-- MI_PN_PROTO_Floor
+	|   |   |-- MI_PN_PROTO_Wall
+	|   |   |-- ...
+	|   |-- ArchViz
+	|   |   |-- M_PN_Stone_Master
+	|   |   |-- MI_PN_Stone_Wet
+	|   |   |-- ...
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
