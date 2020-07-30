@@ -1,36 +1,16 @@
-# [Gamemakin](https://gamemak.in) UE4 Style Guide() {
+# ZOAN UE4 Asset Naming Convention Guide
 
-*A mostly reasonable approach to Unreal Engine 4*
+99% forked from [Allar's Style Guide](https://github.com/Allar/ue4-style-guide).
 
-Heavily inspired by the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript).
+## Middle Fix (IMPORTANT!)
 
-[![Analytics](https://ga-beacon.appspot.com/UA-80567399-1/repo?useReferrer)](#) ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+We very often have to make plugins or to integrate projects, and having to deal with duplicated asset names and some times path conflicts.
 
-## Unreal Engine 4 Linter Plugin
+For this matter, we've adopted a middle fix convention for project and plugin assets in general... for example:
 
-An automated method of checking your project against this style guide is available for purchase at [the Unreal Engine marketplace](https://www.unrealengine.com/marketplace/linter). This plugin's source code will eventually be free, but in order to use with UE4 without building the engine from source code, please use the marketplace version.
-
-## Linter and Style Guide Documentation
-
-More technical documentation regarding Linter and the Style Guide can be found at our [ReadTheDocs](https://ue4-style-guide.readthedocs.io/en/latest/) page.
-
-## Discuss This Style Guide
-
-Gamemakin LLC has a public Discord channel at http://discord.gamemak.in with a #linter channel if you'd like to discuss all things style guide and Linter plugin.
-
-## Linking To This Document
-
-Every section of this style guide is numbered for both easy reference and easy linking. You can link to any section directly by simply append a hash tag and the section number to the end of http://ue4.style
-For example, if you want to send someone to the first principle of this style guide you would append `#0.1`, resulting in http://ue4.style#0.1.
-
-## Forks And Translations
-
-If you have made a notable fork or translation that is not suitable for a pull request into this repo, please submit a pull request to add the fork or translation here.
-
-* [Korean Translation](https://github.com/ymkim50/ue4-style-guide/blob/master/README_Kor.md) by ymkim50
-* [Russian Translation](https://github.com/CosmoMyzrailGorynych/ue4-style-guide-rus/blob/master/README.md) by CosmoMyzrailGorynych
-* [Japanese Translation](https://github.com/akenatsu/ue4-style-guide/blob/master/README.jp.md) by akenatsu
-* [Chinese Translation](https://github.com/skylens-inc/ue4-style-guide/blob/master/README.md) by Beijing Skylens Tech.
+> BP_ZVR_GameMode (A Game Mode Blueprint from our ZOAN Virtual Reality plugin)
+> 
+> M_ZA_DefaultAvatar (A Material for the Default Avatar from our ZOAN Avatar Plugin )
 
 ## Important Terminology
 
@@ -140,11 +120,13 @@ Most things are prefixed with prefixes being generally an acronym of the asset t
 
 <a name="base-asset-name"></a>
 <a name="1.1"></a>
-### 1.1 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix` ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+### 1.1 Base Asset Name - `Prefix_Middlefix_BaseAssetName_Variant_Suffix` ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
 
-All assets should have a _Base Asset Name_. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the standard of  `Prefix_BaseAssetName_Variant_Suffix`.
+All assets should have a _Base Asset Name_. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the standard of  `Prefix_Middlefix_BaseAssetName_Variant_Suffix`.
 
-Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` and in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
+Keeping the pattern `Prefix_Middlefix_BaseAssetName_Variant_Suffix` and in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
+
+`Middlefix` is super important to identify which project or plugin a set of asset are from, as we usually work with several plugins and sometimes have to integrate assets from different projects.
 
 `Prefix` and `Suffix` are to be determined by the asset type through the following [Asset Name Modifier](#asset-name-modifiers) tables.
 
@@ -159,7 +141,18 @@ Depending on how your asset variants are made, you can chain together variant na
 <a name="1.1-examples"></a>
 #### 1.1 Examples
 
-##### 1.1e1 Bob
+##### 1.1e1 ZOAN Assets
+
+| Asset Type              | Asset Name                  | Project / Plugin Title            |
+| ----------------------- | --------------------------- | --------------------------------- |
+| Skeletal Mesh           | SK_ZA_Avatar                | ZOAN Avatars Plugin               |
+| Material                | M_ZVR_VRPad                 | ZOAN Virtual Reality Plugin       |
+| Texture (Diffuse/Albedo)| T_ZVP_Stage_D               | ZOAN Virtual Production Plugin    |
+| Blueprint               | BP_ZVR_GameMode             | ZOAN Virtual Reality Plugin       |
+| Widget Blueprint        | UI_ZA_Username              | ZOAN Avatars Plugin               |
+
+
+##### 1.1e2 Bob
 
 | Asset Type              | Asset Name                                                 |
 | ----------------------- | ---------------------------------------------------------- |
@@ -169,7 +162,7 @@ Depending on how your asset variants are made, you can chain together variant na
 | Texture (Normal)        | T_Bob_N                                                    |
 | Texture (Evil Diffuse)  | T_Bob_Evil_D                                               |
 
-##### 1.1e2 Rocks
+##### 1.1e3 Rocks
 
 | Asset Type              | Asset Name                                                 |
 | ----------------------- | ---------------------------------------------------------- |
@@ -250,7 +243,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Paper Flipbook          | PFB_       |            |                                  |
 | Rig                     | Rig_       |            |                                  |
 | Skeletal Mesh           | SK_        |            |                                  |
-| Skeleton                | SKEL_      |            |                                  |
+| Skeleton                | SKL_       |            |                                  |
 
 <a name="anc-ai"></a>
 <a name="1.2.3"></a>
@@ -275,13 +268,13 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Blueprint               | BP_        |            |                                  |
 | Blueprint Component	  | BP_	       | Component  | I.e. BP_InventoryComponent       |
-| Blueprint Function Library | BPFL_   |            |                                  |
+| Blueprint Function Library | BPL_    |            |                                  |
 | Blueprint Interface     | BPI_       |            |                                  |
 | Blueprint Macro Library | BPML_      |            | Do not use macro libraries if possible. |
-| Enumeration             | E          |            | No underscore.                   |
-| Structure               | F or S     |            | No underscore.                   |
+| Enumeration             | E_         |            |                                  |
+| Structure               | STR_       |            |                                  |
 | Tutorial Blueprint      | TBP_       |            |                                  |
-| Widget Blueprint        | WBP_       |            |                                  |
+| Widget Blueprint        | UI_        |            |                                  |
 
 <a name="anc-materials"></a>
 <a name="1.2.5"></a>
@@ -435,20 +428,26 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 ### 2e1 Example Project Content Structure
 <pre>
 |-- Content
-    |-- <a href="#2.2">GenericShooter</a>
-        |-- Art
-        |   |-- Industrial
-        |   |   |-- Ambient
-        |   |   |-- Machinery
-        |   |   |-- Pipes
-        |   |-- Nature
-        |   |   |-- Ambient
-        |   |   |-- Foliage
-        |   |   |-- Rocks
-        |   |   |-- Trees
-        |   |-- Office
-        |-- Characters
-        |   |-- Bob
+    |-- <a href="#2.2">ProjectName</a>
+        |-- Blueprints
+        |   |-- Actors
+        |   |   |-- BP_PN_Human
+        |   |   |-- BP_PN_Machinery
+        |   |   |-- BP_PN_Pipe
+	|   |   |-- ...
+        |   |-- Managers
+        |   |   |-- BP_PN_DialogManager
+        |   |   |-- BP_PN_TraficManager
+        |   |   |-- ...
+        |   |-- UI
+	|   |   |-- UI_PN_StartupScreen
+	|   |   |-- UI_PN_StartupButton
+	|   |   |-- UI_PN_PauseScreen
+	|   |   |-- ...
+        |-- Maps
+        |   |-- MP_PN_Startup
+	|   |-- MP_PN_Building
+	|   |-- MP_PN_Garden
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
         |   |   |-- Audio
@@ -497,13 +496,11 @@ The reasons for this structure are listed in the following sub-sections.
 
 > 2.4 [Maps](#structure-maps)
 
-> 2.5 [Core](#structure-core)
+> 2.5 [`Assets` and `AssetTypes`](#structure-assettypes)
 
-> 2.6 [`Assets` and `AssetTypes`](#structure-assettypes)
+> 2.6 [Large Sets](#structure-large-sets)
 
-> 2.7 [Large Sets](#structure-large-sets)
-
-> 2.8 [Material Library](#structure-material-library)
+> 2.7 [Material Library](#structure-material-library)
 
 
 <a name="2.1"></a>
@@ -610,26 +607,16 @@ Being able to tell someone to open a specific map without having to explain wher
 This also simplifies the job of cooking for engineers. Wrangling levels for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's maps are all in one place, it is much harder to accidentally not cook a map in a build. It also simplifies lighting build scripts as well as QA processes.
 
 <a name="2.5"></a>
-<a name="structure-core"></a>
-### 2.5 Use A `Core` Folder For Critical Blueprints And Other Assets ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
-
-Use `/Content/Project/Core` folder for assets that are absolutely fundamental to a project's workings. For example, base `GameMode`, `Character`, `PlayerController`, `GameState`, `PlayerState`, and related Blueprints should live here.
-
-This creates a very clear "don't touch these" message for other team members. Non-engineers should have very little reason to enter the `Core` folder. Following good code structure style, designers should be making their gameplay tweaks in child classes that expose functionality. World builders should be using prefab Blueprints in designated folders instead of potentially abusing base classes.
-
-For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Core/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Placeables/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Core/Pickups` as they may unintentionally break pickups project-wide.
-
-<a name="2.6"></a>
 <a name="structure-assettypes"></a>
-### 2.6 Do Not Create Folders Called `Assets` or `AssetTypes` ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 2.5 Do Not Create Folders Called `Assets` or `AssetTypes` ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-<a name="2.6.1"></a>
-#### 2.6.1 Creating a folder named `Assets` is redundant. ![#](https://img.shields.io/badge/lint-supported-green.svg)
+<a name="2.5.1"></a>
+#### 2.5.1 Creating a folder named `Assets` is redundant. ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 All assets are assets.
 
-<a name="2.6.2"></a>
-#### 2.6.2 Creating a folder named `Meshes`, `Textures`, or `Materials` is redundant. ![#](https://img.shields.io/badge/lint-supported-green.svg)
+<a name="2.5.2"></a>
+#### 2.5.2 Creating a folder named `Meshes`, `Textures`, or `Materials` is redundant. ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 All asset names are named with their asset type in mind. These folders offer only redundant information and the use of these folders can easily be replaced with the robust and easy to use filtering system the Content Browser provides.
 
@@ -639,11 +626,11 @@ Want to view only static mesh in `Environment/Rocks/`? Simply turn on the Static
 
 Not doing this also prevents the inevitability of someone putting a static mesh or a texture in a `Materials` folder.
 
-<a name="2.7"></a>
+<a name="2.6"></a>
 <a name="structure-large-sets"></a>
-### 2.7 Very Large Asset Sets Get Their Own Folder Layout ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.6 Very Large Asset Sets Get Their Own Folder Layout ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-This can be seen as a pseudo-exception to [2.6](#2.6).
+This can be seen as a pseudo-exception to [2.5](#2.5).
 
 There are certain asset types that have a huge volume of related files where each asset has a unique purpose. The two most common are Animation and Audio assets. If you find yourself having 15+ of these assets that belong together, they should be together.
 
@@ -651,9 +638,9 @@ For example, animations that are shared across multiple characters should lay in
 
 > This does not apply to assets like textures and materials. It is common for a `Rocks` folder to have a large amount of textures if there are a large amount of rocks, however these textures are generally only related to a few specific rocks and should be named appropriately. Even if these textures are part of a [Material Library](#2.8).
 
-<a name="2.8"></a>
+<a name="2.7"></a>
 <a name="structure-material-library"></a>
-### 2.8 `MaterialLibrary` ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.7 `MaterialLibrary` ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in `Content/Project/MaterialLibrary`.
 
@@ -665,9 +652,9 @@ The `MaterialLibrary` doesn't have to consist of purely materials. Shared utilit
 
 Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
 
-<a name="2.9"></a>
+<a name="2.8"></a>
 <a name="structure-no-empty-folders"></a>
-### 2.9 No Empty Folders ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.8 No Empty Folders ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 There simply shouldn't be any empty folders. They clutter the content browser.
 
