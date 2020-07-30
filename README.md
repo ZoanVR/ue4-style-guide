@@ -1,6 +1,6 @@
 # ZOAN UE4 Asset Naming Convention Guide
 
-99% forked from [Allar's Style Guide](https://github.com/Allar/ue4-style-guide).
+95% originally from [Allar's Style Guide](https://github.com/Allar/ue4-style-guide).
 
 ## Middle Fix (IMPORTANT!)
 
@@ -422,8 +422,6 @@ Equally important as asset names, the directory structure style of a project sho
 
 There are multiple ways to lay out the content of a UE4 project. In this style, we will be using a structure that relies more on filtering and search abilities of the Content Browser for those working with assets to find assets of a specific type instead of another common structure that groups asset types with folders.
 
-> If you are using the prefix [naming convention](#1.2) above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types are already both sorted by prefix as well as able to be filtered in the content browser.
-
 <a name="2e1"><a>
 ### 2e1 Example Project Content Structure
 <pre>
@@ -434,16 +432,13 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |   |-- BP_PN_Human
         |   |   |-- BP_PN_Machinery
         |   |   |-- BP_PN_Pipe
-	|   |   |-- ...
         |   |-- Managers
         |   |   |-- BP_PN_DialogManager
         |   |   |-- BP_PN_TraficManager
-        |   |   |-- ...
         |   |-- UI
 	|   |   |-- UI_PN_StartupScreen
 	|   |   |-- UI_PN_StartupButton
 	|   |   |-- UI_PN_PauseScreen
-	|   |   |-- ...
         |-- Maps
         |   |-- MP_PN_Startup
 	|   |-- MP_PN_Building
@@ -451,28 +446,57 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 	|   |-- Garden
 	|   |   |-- MP_PN_Garden_Part1
 	|   |   |-- MP_PN_Garden_Part2
-	|   |   |-- ...
-	|   |-- ...
 	|-- Meshes
 	|   |-- VivePad
 	|   |   |-- SM_PN_VivePad
 	|   |   |-- M_PN_VivePad_Master
 	|   |   |-- MI_PN_VivePad
-	|   |   |-- ...
 	|   |-- ZoanPad
 	|   |   |-- SM_PN_ZoanPad
 	|   |   |-- M_PN_ZoanPad_Master
-	|   |   |-- ...
 	|-- Materials
 	|   |-- Prototype
 	|   |   |-- M_PN_AlignedUVs_Master
 	|   |   |-- MI_PN_PROTO_Floor
 	|   |   |-- MI_PN_PROTO_Wall
-	|   |   |-- ...
 	|   |-- ArchViz
 	|   |   |-- M_PN_Stone_Master
 	|   |   |-- MI_PN_Stone_Wet
-	|   |   |-- ...
+</pre>
+
+<a name="2e2"><a>
+### 2e1 Example Plugin Content Structure
+<pre>
+|-- <a href="#2.2">ZOAN VR Plugin Content</a>
+    |-- Blueprints
+    |   |-- Actors
+    |   |   |-- BP_ZVR_Human
+    |   |   |-- BP_ZVR_Machinery
+    |   |-- Managers
+    |   |   |-- BP_ZVR_TeleportManager
+    |   |-- UI
+    |   |   |-- UI_ZVR_StartupScreen
+    |   |   |-- UI_ZVR_StartupButton
+    |-- Maps
+    |   |-- MP_ZVR_Startup
+    |   |-- Startup
+    |   |   |-- MP_ZVR_Startup_Part1
+    |   |   |-- MP_ZVR_Startup_Part2
+    |-- Meshes
+    |   |-- VivePad
+    |   |   |-- SM_ZVR_VivePad
+    |   |   |-- M_ZVR_VivePad
+    |   |-- ZoanPad
+    |   |   |-- SM_ZVR_ZoanPad
+    |   |   |-- M_ZVR_ZoanPad
+    |-- Materials
+    |   |-- Prototype
+    |   |   |-- M_ZVR_AlignedUVs_Master
+    |   |   |-- MI_ZVR_PROTO_Floor
+    |   |   |-- MI_ZVR_PROTO_Wall
+    |   |-- ArchViz
+    |   |   |-- M_ZVR_Stone_Master
+    |   |   |-- MI_ZVR_Stone_Wet
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
@@ -525,7 +549,9 @@ Using other characters outside `a-z`, `A-Z`, and `0-9` such as `@`, `-`, `_`, `,
 <a name="structure-top-level"><a>
 ### 2.2 Use A Top Level Folder For Project Specific Assets ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-All of a project's assets should exist in a folder named after the project. For example, if your project is named 'Generic Shooter', _all_ of it's content should exist in `Content/GenericShooter`.
+All of a project's assets should exist in a second root folder named after the project. For example, if your project is named 'Helsinki City', _all_ of it's content should exist in `Content/HelsinkiCity`.
+
+Plugin assets do not need a second root folder like project assets do, but keeping other folders from the project standard.
 
 > The `Developers` folder is not for assets that your project relies on and therefore is not project specific. See [Developer Folders](#2.3) for details about this.
 
